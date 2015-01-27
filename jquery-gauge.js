@@ -1,3 +1,5 @@
+/* global jQuery:true */
+
 "use strict";
 
 /**
@@ -36,22 +38,22 @@ Gauge.defaults = {
         90: '#f00'
     },
     angles: [
-        150, 
+        150,
         390
     ],
     lineWidth: 4,
     arrowWidth: 10,
     arrowColor: '#1e98e4',
-    inset:false,
+    inset: false,
 
-    value: 70
+    value: 0
 };
 
 Gauge.prototype = {
     constructor: Gauge,
     gaps: [
         [20, 12], // outside gaps @TODO - calculate gaps
-        [20, 8], // inside gaps @TODO - calculate gaps
+        [20, 8]   // inside gaps @TODO - calculate gaps
     ],
     init: function (element, options) {
 
@@ -64,7 +66,7 @@ Gauge.prototype = {
 
         $(window).on('resize', function () {
             self.draw();
-        })
+        });
     },
 
     draw: function () {
@@ -138,7 +140,7 @@ Gauge.prototype = {
 
     /* Get angel according to aperture */
     getPercentAngle: function (percent) {
-        return ((percent * .01) * (this.options.angles[1] - this.options.angles[0]) + this.options.angles[0])
+        return ((percent * 0.01) * (this.options.angles[1] - this.options.angles[0]) + this.options.angles[0]);
     },
 
     /**
@@ -230,13 +232,11 @@ Gauge.prototype = {
     setValue: function(value) {
         this.options.value = value;
         var angle = this.getPercentAngle(value);
-        this.$element.find('.b-gauge__arrow').css({transform: 'rotate(' + (angle + 90) + 'deg)'})
+        this.$element.find('.b-gauge__arrow').css({transform: 'rotate(' + (angle + 90) + 'deg)'});
     },
 
     /* Create text labels */
     createValues: function () {
-        var self = this;
-
         this.walkPercents(this.options.values, function (percent, angle) {
             var coords = this.getCoordinate(angle, this.options.labelsWidth, this.options.labelsHeight);
             var $label = $('<div>').addClass('b-gauge__label').text(this.options.values[percent]);
@@ -250,8 +250,6 @@ Gauge.prototype = {
     },
     /* Create text marks */
     createMarks: function () {
-        var self = this;
-
         this.walkPercents(this.options.values, function (percent, angle) {
             var coords = this.getCoordinate(angle, this.options.marksWidth, this.options.marksHeight);
             var $mark = $('<div>').addClass('b-gauge__mark');
@@ -273,12 +271,14 @@ $.fn.gauge = function (option) {
     return this.each(function () {
         var $this = $(this);
         var data = $this.data('plugin-gauge');
-        var options = typeof option == 'object' && option;
+        var options = typeof option === 'object' && option;
         if (!data) {
             $this.data('plugin-gauge', (data = new Gauge($(this), options)));
         }
-        if (typeof option == 'string') data[option]()
-    })
+        if (typeof option === 'string') {
+            data[option]();
+        }
+    });
 };
 
 $.fn.gauge.Constructor = Gauge;

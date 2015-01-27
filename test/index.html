@@ -3,7 +3,7 @@
 <head>
     <title>jquery-gauge demo</title>
     <meta name="viewport" content="width=1024, maximum-scale=1">
-    <link href="../index.css" type="text/css" rel="stylesheet">
+    <link href="../jquery-gauge.css" type="text/css" rel="stylesheet">
     <style>
         .demo1 {
             position: relative;
@@ -30,11 +30,11 @@
     <div class="gauge2 demo2"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script type="text/javascript" src="../index.js"></script>
+    <script type="text/javascript" src="../jquery-gauge.min.js"></script>
     <script>
 
         // first example
-        var gauge = new Gauge($('.gauge1'));
+        var gauge = new Gauge($('.gauge1'), {value: 70});
 
         // second example
         $('.gauge2').gauge({
@@ -58,7 +58,7 @@
             lineWidth: 10,
             arrowWidth: 20,
             arrowColor: '#ccc',
-            position:'inside',
+            inset:true,
 
             value: 30
         });
