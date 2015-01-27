@@ -1,12 +1,13 @@
 # jquery-gauge
 
-Simple circular gauge, based on SVG.
+Simple circular gauge, based on jquery and SVG.
 
 ## Usage
 
 ```js
+// by using global Gague class
 var gauge = new Gauge($('.gauge'), options);
-// or
+// or by jQuery-plugin
 $('.gauge').gauge(options);
 ```
 
@@ -15,8 +16,8 @@ $('.gauge').gauge(options);
 | Param | Default | Description |
 |---|---|---|
 | `angles` | `[150, 390]` | Start and end angles defining gauge’s aperture |
-| `values` | `{0: 'start', 100: 'end'}` | Dict of labels corresponding to percentage values |
-| `colors` | `{0:'gray', 70:'orange', 90:'red'}` | Dict of colors corresponding to percentage values |
+| `values` | `{0: '0', 50: '5', 100: '10'}` | List of labels corresponding to percentage values |
+| `colors` | `{0:'gray', 50:'orange', 80:'red'}` | List of colors corresponding to percentage values |
 | `value` | `70` | Initial value |
 | `lineWidth` | `4` | Gauge circular line width |
 | `arrowWidth` | `10` | Arrow width |
