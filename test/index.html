@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <title>jquery-gauge demo</title>
+    <meta name="viewport" content="width=1024, maximum-scale=1">
+    <link href="../index.css" type="text/css" rel="stylesheet">
+    <style>
+        .demo1 {
+            position: relative;
+            width: 20vw;
+            height: 20vw;
+            box-sizing: border-box;
+            float:left;
+            margin:20px
+        }
+
+        .demo2 {
+            position: relative;
+            width: 40vw;
+            height: 40vw;
+            box-sizing: border-box;
+            float:right;
+            margin:20px
+        }
+    </style>
+</head>
+<body>
+    <div class="gauge1 demo1"></div>
+
+    <div class="gauge2 demo2"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../index.js"></script>
+    <script>
+
+        // first example
+        var gauge = new Gauge($('.gauge1'));
+
+        // second example
+        $('.gauge2').gauge({
+            values: {
+                0 : '0',
+                20: '2',
+                40: '4',
+                60: '6',
+                80: '8',
+                100: '10'
+            },
+            colors: {
+                0 : '#666',
+                60: '#ffa500',
+                80: '#f00'
+            },
+            angles: [
+                180,
+                360
+            ],
+            lineWidth: 10,
+            arrowWidth: 20,
+            arrowColor: '#ccc',
+            position:'inside',
+
+            value: 30
+        });
+    </script>
+</body>
+</html>
+
