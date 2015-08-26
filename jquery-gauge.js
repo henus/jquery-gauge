@@ -130,8 +130,12 @@ Gauge.prototype = {
         var angle,
             self = this;
 
+        var compareNumbers = function (a, b) {
+            return a - b;
+        };
+
         //sort percents
-        var percents = Object.keys(obj).map(parseFloat).sort();
+        var percents = Object.keys(obj).map(parseFloat).sort(compareNumbers);
         $.each(percents, function (i, percent) {
             angle = self.getPercentAngle(percent);
             fn.call(self, percent, angle);
@@ -140,7 +144,7 @@ Gauge.prototype = {
 
     /* Get angel according to aperture */
     getPercentAngle: function (percent) {
-        return ((percent * 0.01) * (this.options.angles[1] - this.options.angles[0]) + this.options.angles[0]);
+        return ((percent * 0.01 * (this.options.angles[1] - this.options.angles[0])) + this.options.angles[0]);
     },
 
     /**
@@ -182,7 +186,7 @@ Gauge.prototype = {
     createPath: function (prevAngle, nextAngle, color) {
         var prevCoords = this.getCoordinate(prevAngle, this.options.pathsWidth, this.options.pathsHeight),
             nextCoords = this.getCoordinate(nextAngle, this.options.pathsWidth, this.options.pathsHeight),
-            d          = 'M ' + prevCoords + ' A ' + this.options.pathsWidth / 2 + ' ' + this.options.pathsHeight / 2 + ' 0 ' + (Math.abs(nextAngle - prevAngle) > 180 ? 1 : 0) + ' ' + ' 1 ' + nextCoords;
+            d          = 'M ' + prevCoords + ' A ' + this.options.pathsWidth / 2 + ' ' + this.options.pathsHeight / 2 + ' 0 ' + (Math.abs(nextAngle - prevAngle) > 180 ? 1 : 0) + ' 1 ' + nextCoords;
         this.appendSVG('path', {
             'class'        : 'b-gauge__path',
             'd'            : d,
