@@ -1,7 +1,7 @@
 {
   "name": "jquery-gauge",
   "main": "jquery-gauge.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/henus/jquery-gauge",
   "description": "Simple circular gauge, based on jquery and SVG",
   "license": "Unlicensed"

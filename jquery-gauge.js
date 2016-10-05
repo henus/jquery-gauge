@@ -3,7 +3,7 @@
 "use strict";
 
 /**
- *  Gauge class definition 
+ *  Gauge class definition
  */
 var Gauge = function (element, options) {
     if (element && element instanceof jQuery) {
@@ -120,7 +120,7 @@ Gauge.prototype = {
         this.$marks.css({
             left: (isOutside) ? this.gaps[0][1] : this.gaps[1][1],
             top:  (isOutside) ? this.gaps[0][1] : this.gaps[1][1]
-    });
+        });
     },
 
     /**
@@ -168,7 +168,7 @@ Gauge.prototype = {
 
         this.$paths.html('');
 
-        this.walkPercents(this.options.colors, function(percent, angle) {
+        this.walkPercents(this.options.colors, function (percent, angle) {
             if (color) {
                 self.createPath(lastAngle, angle, color);
             }
@@ -220,11 +220,12 @@ Gauge.prototype = {
             'class'  : 'b-gauge__arrow',
             'points' : points,
             'fill'   : this.options.arrowColor
+            'height' : this.options.pathsHeight / 2
         });
     },
 
     /* Append SVG */
-    appendSVG: function(type, attributes) {
+    appendSVG: function (type, attributes) {
         var path = document.createElementNS('http://www.w3.org/2000/svg', type);
         $.each(attributes, function (name, value) {
             path.setAttribute(name, value);
@@ -233,10 +234,12 @@ Gauge.prototype = {
     },
 
     /* Set value */
-    setValue: function(value) {
+    setValue: function (value) {
         this.options.value = value;
         var angle = this.getPercentAngle(value);
-        this.$element.find('.b-gauge__arrow').css({transform: 'rotate(' + (angle + 90) + 'deg)'});
+        var arrow = this.$element.find('.b-gauge__arrow');
+        var height = arrow[0].getAttribute('height');
+        arrow.attr({transform: 'rotate(' + (angle + 90) + ' ' + height + ' ' + height + ')'});
     },
 
     /* Create text labels */

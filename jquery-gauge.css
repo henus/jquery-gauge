@@ -1,13 +1,13 @@
 /* Base blocks */
-.b-gauge               {position: relative; width: 100%; height: 100%; box-sizing: border-box; font-family: Arial, sans-serif}
-.b-gauge__block        {position: absolute; overflow:visible; top: 0; left: 0; bottom: 0; right: 0;}
+.b-gauge               {position: relative; width: 100%; height: 100%; box-sizing: border-box; font-family: Arial, sans-serif;}
+.b-gauge__block        {position: absolute; overflow: visible; top: 0; left: 0; bottom: 0; right: 0;}
 
 /* Color circles */
 .b-gauge__paths        {width: 100%; height: 100%;}
 .b-gauge__path         {}
 
 /* Arrow */
-.b-gauge__arrow        {-webkit-transform-origin: 50% 100%; -moz-transform-origin: 50% 100%; transform-origin: 50% 100%;}
+.b-gauge__arrow        {}
 .b-gauge__arrow-circle {}
 
 /* Labels */
@@ -16,4 +16,4 @@
 
 /* Marks */
 .b-gauge__marks        {}
-.b-gauge__mark         {position: absolute; background: #ccc; width: 1px; height: 4px; }
+.b-gauge__mark         {position: absolute; background: #ccc; width: 1px; height: 4px;}
